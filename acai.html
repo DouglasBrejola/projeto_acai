@@ -1,0 +1,207 @@
+<!-- 1 – Um sistema para um totem de uma loja de açaí que tenha 3 telas: Uma tela inicial, a tela
+onde o ususario ira fazer o pedido e uma tela de contato do desenvolvedor. Na tela de pedidos
+ele vai escolher 3 dos 7 ingredientes e 1 dos 3 tipos de cobertura.
+
+Preços:
+Açai 300ml – R$5,00
+Açai 500ml – R$10,00
+Açai 700ml – R$17,00
+Açai 1l – R$35,00
+
+Ingredientes: Granola, Paçoca, Amedoin, Uva passa, leite em po, confetti mm e coco ralado.
+
+Cobertura: Leite condensado, cobertura de chocolate e cobertura de morango
+No final do pedido devera mostrar qual o preço final a ser pago pelo cliente. Esse sistema deve
+funcionar em uma tela de 700px. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Açaí do DG</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body background="bgacai.webp">
+    <div <nav class="navbar navbar-expand-sm navbar-light" style="background-color: #e3f2fd3b;">
+        <a href="paginaInicial.html"><img src="acai.png" style="height: 100px;
+            width: 163px;"></a>
+        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+            aria-label="Toggle navigation"></button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav me-auto mt-2 mt-lg-0 ">
+                <li class="nav-item active">
+                    <a class="nav-link text-light" href="acai.html">AÇAÍ <span
+                            class="visually-hidden">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="analista.html">ANALISTA</a>
+                </li>
+            </ul>
+        </div>
+        </nav>
+        <div id="fade" class="hide"></div>
+        <div id="modal" class="hide" style="display:flex ; flex-direction: column;">
+            <div class="mineModal" > 
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button class="btn btn-secondary btn-outline-success text-light me-md-4" style="margin-top: 1%;" type="button" id="fechar-modal">X</button>
+                </div>
+                <div style="margin-top: 10%; margin-left: 20%; height: auto;">
+                    <input type="text" name="nome" id="nome" placeholder="Seu nome é?">
+                </div>
+                <div style="margin-top: 10%; margin-left: 20%; height: auto;">
+                    <input type="text" name="pagamento" id="pagamento" readonly placeholder="VALOR TOTAL">
+                </div>
+                <div>
+                    <button class="btn btn-secondary btn-outline-success text-light" style="margin-top: 5%; margin-left: 17%;" type="button"  id="fim">
+                        EFETUE SEU PAGAMENTO
+                    </button>
+                </div> 
+            </div>
+        </div>
+        <div style="margin-right: 3% ;">
+            <button type="button" class="btn btn-secondary btn-outline-success text-light " id="abrir-modal" >
+                TOTAL A PAGAR
+            </button>
+        </div>
+    </div>
+    <main>
+        <div class="d-flex justify-content-center align-items-center text-light flex-column  p-3"
+            style=" width: 40%; margin-left: 28%;">
+            <p style="text-align:center;">Selecione seu Açaí, seus complementos e sua cobertura</p>
+            <p style="text-align: center;">Depois, clique em adicionar ao carrinho</p>
+        </div>
+        <div class="text-light ">
+            <div class="row d-flex justify-content-center">
+                <div class="col-4" id="acai">
+                    <div class=" w-100 p-1" style="text-align:center ;">
+                        <h3>AÇAÍ</h3>
+                    </div>
+                    <div style="padding-left: 35%">
+                        <div class="form-check text-light">
+                            <input class="form-check-input" type="radio" name="acai1" value="Acai_300mL" id="acai0">
+                            <label class="form-check-label" for="flexRadioDefault">
+                                Açai 300mL
+                            </label>
+                        </div>
+                        <div class="form-check text-light">
+                            <input class="form-check-input" type="radio" name="acai1" value="Acai_500mL" id="acai2">
+                            <label class="form-check-label" for="flexRadioDefault">
+                                Açai 500mL
+                            </label>
+                        </div>
+                        <div class="form-check text-light">
+                            <input class="form-check-input" type="radio" name="acai1" value="Acai_700mL" id="acai3">
+                            <label class="form-check-label" for="flexRadioDefault">
+                                Açai 700mL
+                            </label>
+                        </div>
+                        <div class="form-check text-light">
+                            <input class="form-check-input" type="radio" name="acai1" value="Acai_1L" id="acai4">
+                            <label class="form-check-label" for="flexRadioDefault">
+                                Açai 1L
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4" id="complemento" style="margin-right: solid 1px white;">
+                    <div class=" w-100 p-1 " style="text-align:center ;">
+                        <h3>COMPLEMENTOS</h3>
+                    </div>
+                    <div style="padding-left: 35%">
+                        <div class="form-check text-light ">
+                            <input class="form-check-input" type="checkbox" value="granola" name="complemento1"
+                                id="granola">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                GRANOLA
+                            </label>
+                        </div>
+                        <div class="form-check text-light">
+                            <input class="form-check-input" type="checkbox" value="pacoca" name="complemento1"
+                                id="pacoca">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                PAÇOCA
+                            </label>
+                        </div>
+                        <div class="form-check text-light">
+                            <input class="form-check-input" type="checkbox" value="amendoin" name="complemento1"
+                                id="amendoin">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                AMENDOIN
+                            </label>
+                        </div>
+                        <div class="form-check text-light">
+                            <input class="form-check-input" type="checkbox" value="uva" name="complemento1" id="uva">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                UVA PASSA
+                            </label>
+                        </div>
+                        <div class="form-check text-light">
+                            <input class="form-check-input" type="checkbox" value="leite" name="complemento1"
+                                id="leite">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                LEITE EM PÓ
+                            </label>
+                        </div>
+                        <div class="form-check text-light">
+                            <input class="form-check-input" type="checkbox" value="mm" name="complemento1" id="mm">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                CONFETTI MM
+                            </label>
+                        </div>
+                        <div class="form-check text-light">
+                            <input class="form-check-input" type="checkbox" value="coco" name="complemento1" id="coco">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                COCO RALADO
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4" id="cobertura" style="margin-right: solid 1px white;">
+                    <div class=" w-100 p-1" style="text-align:center ; ">
+                        <h3>COBERTURAS</h3>
+                    </div>
+                    <div style="padding-left: 35%">
+                        <div class="form-check text-light">
+                            <input class="form-check-input" type="radio" value="leite_Condensado" name="cob"
+                                id="lCondensado">
+                            <label class="form-check-label" for="flexRadioDefault">
+                                LEITE CONDENSADO
+                            </label>
+                        </div>
+                        <div class="form-check text-light">
+                            <input class="form-check-input" type="radio" value="chocolate" name="cob" id="chocolate">
+                            <label class="form-check-label" for="flexRadioDefault">
+                                CHOCOLATE
+                            </label>
+                        </div>
+                        <div class="form-check text-light">
+                            <input class="form-check-input" type="radio" value="morango" name="cob" id="morango">
+                            <label class="form-check-label" for="flexRadioDefault">
+                                MORANGO
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center mt-3 text-light">
+            <button type="button" class="btn btn-secondary btn-outline-success text-light w-25 " id="add-carrinho">
+                ADICIONAR AO CARRINHO
+            </button>
+        </div>
+    </main>
+    <footer style="color: white; display: flex; flex-direction: column; align-items: center; margin-top: 6%;">
+        &copy;Douglas Brejola Diniz
+    </footer>
+</body>
+
+</html>
